@@ -37,6 +37,6 @@ class Ship:
 
     def blitme(self):
         """
-        Spaceship display on proper location
+        Spaceship displayed on proper location
         """
         self.screen.blit(self.image, self.rect)
