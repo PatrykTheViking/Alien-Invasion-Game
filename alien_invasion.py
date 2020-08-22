@@ -20,14 +20,45 @@ class AlienInvasion:
         This function runs main loop
         """
         while True:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    sys.exit()
+            self._check_events()
+            self.ship.update()
+            self._update_screen()
 
-            self.screen.fill(self.settings.background_color)
-            self.ship.blitme()
+    def _check_events(self):
+        """
+        The function reacts on events during the game
+        """
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                self._check_keydown_event(event)
+            elif event.type == pygame.KEYUP:
+                self._check_keyup_events(event)
 
-            pygame.display.flip()
+    def _check_keydown_event(self, event):
+        """
+        The function reacts on pressing a keyboard key and lets the spaceship move
+        """
+        if event.key == pygame.K_RIGHT:
+            self.ship.moving_right = True
+        elif event.key == pygame.K_LEFT:
+            self.ship.moving_left = True
+
+    def _check_keyup_events(self, event):
+        """
+        The function reacts on releasing the button and stops the ship
+        """
+        if event.key == pygame.K_RIGHT:
+            self.ship.moving_right = False
+        elif event.key == pygame.K_LEFT:
+            self.ship.moving_left = False
+
+    def _update_screen(self):
+        self.screen.fill(self.settings.background_color)
+        self.ship.blitme()
+
+        pygame.display.flip()
 
 
 if __name__ == '__main__':
