@@ -27,7 +27,7 @@ class AlienInvasion:
         self.aliens = pygame.sprite.Group()
 
         self._create_fleet()
-        self.play_button = Button(self, "Play")
+        self.play_button = Button(self, self.screen, "Play")
 
     def run_game(self):
         """
