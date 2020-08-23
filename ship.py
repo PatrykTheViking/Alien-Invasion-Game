@@ -35,6 +35,13 @@ class Ship:
 
         self.rect.x = self.x
 
+    def center_ship(self):
+        """
+        Center the ship after being hit by alien object
+        """
+        self.rect.midbottom = self.screen_rect.midbottom
+        self.x = float(self.rect.x)
+
     def blitme(self):
         """
         Spaceship displayed on proper location
