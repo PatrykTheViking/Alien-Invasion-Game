@@ -35,7 +35,7 @@ class AlienInvasion:
 
     def _check_events(self):
         """
-        The function reacts on events during the game
+        React on events during the game
         """
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -47,7 +47,7 @@ class AlienInvasion:
 
     def _check_keydown_event(self, event):
         """
-        The function reacts on pressing a keyboard key and lets the spaceship move or exit the game
+        React on pressing a keyboard key and let the spaceship move or exit the game
         """
         if event.key == pygame.K_RIGHT:
             self.ship.moving_right = True
