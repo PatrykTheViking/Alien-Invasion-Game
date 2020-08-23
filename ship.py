@@ -1,11 +1,13 @@
 import pygame
+from pygame.sprite import Sprite
 
 
-class Ship:
+class Ship(Sprite):
     """
     This class is to set up and organize players Spaceship
     """
     def __init__(self, ai_game):
+        super().__init__()
         # spaceship init and it's start location
         self.screen = ai_game.screen
         self.settings = ai_game.settings
