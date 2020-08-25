@@ -14,7 +14,7 @@ class Ship(Sprite):
         self.screen_rect = ai_game.screen.get_rect()
 
         # Loads up spaceship image
-        self.image = pygame.image.load('images/ship.bmp')
+        self.image = pygame.image.load('images/ship1.png')
         self.rect = self.image.get_rect()
 
         # Location of the image

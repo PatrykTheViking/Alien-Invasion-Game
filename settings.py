@@ -12,7 +12,6 @@ class Settings:
         self.background_color = (128, 128, 128)
         self.background_image = pygame.image.load('images/background.bmp')
 
-
         # ship settings
         self.ship_limit = 1
 
@@ -33,9 +32,9 @@ class Settings:
         """
         Settings init that change during the game
         """
-        self.ship_speed = 2.5
-        self.bullet_speed = 1.5
-        self.alien_speed = 3.0
+        self.ship_speed = 6.0
+        self.bullet_speed = 3.0
+        self.alien_speed = 5.0
         self.fleet_direction = 1
         self.alien_points = 50
 

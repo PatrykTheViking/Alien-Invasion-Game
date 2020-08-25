@@ -16,8 +16,8 @@ class Scoreboard:
         self.stats = ai_game.stats
 
         # font set up for scoreboard
-        self.text_color = (30, 30, 30)
-        self.font = pygame.font.SysFont(None, 48)
+        self.text_color = (255, 255, 255)
+        self.font = pygame.font.SysFont("comicsansms", 35)
 
         # main set up
         self.prep_score()
@@ -31,7 +31,7 @@ class Scoreboard:
         """
         rounded_score = round(self.stats.score, -1)
         score_str = "{:,}".format(rounded_score)
-        self.score_image = self.font.render(score_str, True, self.text_color, self.settings.background_color)
+        self.score_image = self.font.render(score_str, True, self.text_color, None)
 
         # display scoreboard at right top corner
         self.score_rect = self.score_image.get_rect()
@@ -45,7 +45,7 @@ class Scoreboard:
         high_score = round(self.stats.high_score, -1)
         high_score_str = "{:,}".format(high_score)
 
-        self.high_score_image = self.font.render(high_score_str, True, self.text_color, self.settings.background_color)
+        self.high_score_image = self.font.render(high_score_str, True, self.text_color, None)
 
         # display high score at the middle top of the screen
         self.high_score_rect = self.high_score_image.get_rect()
@@ -74,7 +74,7 @@ class Scoreboard:
         Converts level into a image object
         """
         level_str = str(self.stats.level)
-        self.level_image = self.font.render(level_str, True, self.text_color, self.settings.background_color)
+        self.level_image = self.font.render(level_str, True, self.text_color, None)
 
         # level number to be displayed under current score
         self.level_rect = self.level_image.get_rect()
