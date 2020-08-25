@@ -1,3 +1,6 @@
+import pygame
+
+
 class Settings:
     """
     This class will maintain all game settings
@@ -7,6 +10,8 @@ class Settings:
         self.screen_width = 1400
         self.screen_height = 900
         self.background_color = (128, 128, 128)
+        self.background_image = pygame.image.load('images/background.bmp')
+
 
         # ship settings
         self.ship_limit = 1

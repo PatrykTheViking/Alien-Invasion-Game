@@ -243,7 +243,7 @@ class AlienInvasion:
                 break
 
     def _update_screen(self):
-        self.screen.fill(self.settings.background_color)
+        self.screen.blit(self.settings.background_image, [0, 0])
         self.ship.blitme()
 
         for bullet in self.bullets.sprites():
