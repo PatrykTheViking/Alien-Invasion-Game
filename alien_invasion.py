@@ -16,6 +16,7 @@ class AlienInvasion:
     # Main class to maintain resources and the way game works
     def __init__(self):
         pygame.init()
+
         self.settings = Settings()
         self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         self.settings.screen_width = self.screen.get_rect().width
@@ -28,6 +29,7 @@ class AlienInvasion:
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
 
+        self._check_music()
         self._create_fleet()
         self.play_button = Button(self, self.screen, "Single Player")
 
@@ -113,6 +115,9 @@ class AlienInvasion:
         if len(self.bullets) < self.settings.bullets_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
+            bullet_sound = pygame.mixer.Sound('music/laser.wav')
+            bullet_sound.set_volume(0.3)
+            bullet_sound.play()
 
     def _update_bullets(self):
         # update bullets location
@@ -135,6 +140,9 @@ class AlienInvasion:
         if collisions:
             for aliens in collisions.values():
                 self.stats.score += self.settings.alien_points * len(aliens)
+                collision_sound = pygame.mixer.Sound('music/explosion.wav')
+                collision_sound.set_volume(0.3)
+                collision_sound.play()
             self.score_board.prep_score()
             self.score_board.check_high_score()
 
@@ -242,7 +250,16 @@ class AlienInvasion:
                 self._ship_hit()
                 break
 
+    def _check_music(self):
+        """
+        Play music while game starts, endless loop
+        """
+        pygame.mixer.init()
+        pygame.mixer.music.load('music/background.wav')
+        pygame.mixer.music.play(-1)
+
     def _update_screen(self):
+
         self.screen.blit(self.settings.background_image, [0, 0])
         self.ship.blitme()
 
