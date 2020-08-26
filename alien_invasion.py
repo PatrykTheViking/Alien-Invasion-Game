@@ -31,7 +31,7 @@ class AlienInvasion:
 
         self._check_music()
         self._create_fleet()
-        self.play_button = Button(self, self.screen, "Single Player")
+        self.single_player = Button(self, self.screen, "Single Player")
 
     def run_game(self):
         """
@@ -68,7 +68,7 @@ class AlienInvasion:
         """
         Starts new game once "Play" button pressed
         """
-        button_clicked = self.play_button.rect.collidepoint(mouse_pos)
+        button_clicked = self.single_player.rect.collidepoint(mouse_pos)
         if button_clicked and not self.stats.game_active:
             self.settings.initialize_dynamic_settings()
             self.stats.reset_stats()
@@ -270,7 +270,7 @@ class AlienInvasion:
         self.score_board.show_score()
 
         if not self.stats.game_active:
-            self.play_button.draw_button()
+            self.single_player.draw_button()
 
         pygame.display.flip()
 
