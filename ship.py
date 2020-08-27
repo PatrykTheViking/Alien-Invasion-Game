@@ -3,21 +3,20 @@ from pygame.sprite import Sprite
 
 
 class Ship(Sprite):
-    """
-    This class is to set up and organize players Spaceship
+    """This class is to set up and organize players spaceship
+    Attributes:
+        image: load ship image
+        rect.midbottom : set center location
     """
     def __init__(self, ai_game):
         super().__init__()
-        # spaceship init and it's start location
         self.screen = ai_game.screen
         self.settings = ai_game.settings
         self.screen_rect = ai_game.screen.get_rect()
 
-        # Loads up spaceship image
         self.image = pygame.image.load('images/ship1.png')
         self.rect = self.image.get_rect()
 
-        # Location of the image
         self.rect.midbottom = self.screen_rect.midbottom
 
         self.x = float(self.rect.x)
@@ -26,9 +25,7 @@ class Ship(Sprite):
         self.moving_left = False
 
     def update(self):
-        """
-        Spaceship position update
-        """
+        """Spaceship position update"""
         if self.moving_right and self.rect.right < self.screen_rect.right:
             self.x += self.settings.ship_speed
 
@@ -38,14 +35,10 @@ class Ship(Sprite):
         self.rect.x = self.x
 
     def center_ship(self):
-        """
-        Center the ship after being hit by alien object
-        """
+        """Center the ship after being hit by alien object"""
         self.rect.midbottom = self.screen_rect.midbottom
         self.x = float(self.rect.x)
 
     def blitme(self):
-        """
-        Spaceship displayed on proper location
-        """
+        """Spaceship displayed on proper location"""
         self.screen.blit(self.image, self.rect)
